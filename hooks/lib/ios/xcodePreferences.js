@@ -77,7 +77,7 @@ function activateAssociativeDomains(context, projFolder) {
         var buildSettings = configurations[config].buildSettings;
         // if deployment target is less then the required one - increase it
         if (buildSettings['IPHONEOS_DEPLOYMENT_TARGET']) {
-            if (compare(buildSettings['IPHONEOS_DEPLOYMENT_TARGET'], IOS_DEPLOYMENT_TARGET) === -1) {
+            if (compare(buildSettings['IPHONEOS_DEPLOYMENT_TARGET'].toString(), IOS_DEPLOYMENT_TARGET) === -1) {
                 buildSettings['IPHONEOS_DEPLOYMENT_TARGET'] = IOS_DEPLOYMENT_TARGET;
                 deploymentTargetIsUpdated = true;
             }
