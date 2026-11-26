@@ -9,7 +9,6 @@ Script only generates content. The cordova-ios project template already referenc
 var path = require('path');
 var fs = require('fs');
 var plist = require('plist');
-var mkpath = require('mkpath');
 var context;
 
 module.exports = {
