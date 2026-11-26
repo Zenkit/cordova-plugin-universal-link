@@ -26,9 +26,29 @@
 
 - (void)pluginInitialize {
     [self localInit];
+    // cordova-ios 8 delivers applinks through scenes, which post this notification
+    // instead of calling application:continueUserActivity:restorationHandler.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onContinueUserActivity:)
+                                                 name:@"CDVPluginContinueUserActivityNotification"
+                                               object:nil];
     // Can be used for testing.
     // Just uncomment, close the app and reopen it. That will simulate application launch from the link.
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onResume:) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+- (void)dispose {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CDVPluginContinueUserActivityNotification" object:nil];
+    [super dispose];
+}
+
+- (void)onContinueUserActivity:(NSNotification *)notification {
+    NSUserActivity *activity = notification.object;
+    // ignore activities that are not for Universal Links
+    if (![activity isKindOfClass:[NSUserActivity class]] || ![activity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb] || activity.webpageURL == nil) {
+        return;
+    }
+    [self handleUserActivity:activity];
 }
 
 //- (void)onResume:(NSNotification *)notification {
