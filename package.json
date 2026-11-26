@@ -1,6 +1,6 @@
 {
-  "name": "cordova-plugin-universal-link",
-  "version": "1.2.4",
+  "name": "@zenkit-dev/cordova-plugin-universal-link",
+  "version": "1.2.4-dev.6",
   "description": "Cordova plugin to add in your application support for Universal Links (iOS 9) and Deep Links (Android). Basically, open application through the link in the browser.",
   "cordova": {
     "id": "cordova-plugin-universal-link",
@@ -9,10 +9,7 @@
       "android"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:gojob-1337/cordova-plugin-universal-link.git"
-  },
+  "repository": "https://github.com/zenkit/cordova-plugin-universal-link.git",
   "keywords": [
     "cordova",
     "links",
@@ -24,16 +21,6 @@
     "cordova-android",
     "ios",
     "android"
-  ],
-  "engines": [
-    {
-      "name": "cordova-ios",
-      "version": ">=3.8"
-    },
-    {
-      "name": "cordova-android",
-      "version": ">=4"
-    }
   ],
   "dependencies": {
     "xml2js": "^0.6.2",
